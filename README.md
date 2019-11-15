@@ -1,13 +1,13 @@
 <h1 align="center">
-  <img src="./src/images/loadinglogo.png" width="100"/><br>
+  <img src="./src/assets/logo.png" width="100"/><br>
 </h1>
 
 ## Royal Hotel Apps
 This project is still on very early development stage. If you want to use for production, use it with your own risk.
 <br>More feature Coming Really Soon.
 
-## Introduction Royal hotel is a more appropriate application used for users or receptionists to facilitate it in managing hotel rooms in real time, and recognizing customer identity
-- 
+## Introduction Royal
+- Royal hotel is a more appropriate application used for users or receptionists to facilitate it in managing hotel rooms in real time, and recognizing customer identity
 
 ## Screenshots
 

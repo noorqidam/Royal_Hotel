@@ -9,6 +9,7 @@ import {
   AsyncStorage,
   FlatList,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import { Header, Body, Title, Button, Input, Item } from 'native-base';
 
@@ -29,10 +30,6 @@ class Room extends Component {
     state: false,
     spinner: false,
   };
-  // async componentDidMount() {
-  //   const tok = await AsyncStorage.getItem('token');
-  //   await this.props.handleGetRooms(tok);
-  // }
 
   listAll(item) {
     return (
@@ -74,6 +71,17 @@ class Room extends Component {
       this.getData();
       this.setState({ modalEdit: false, spinner: false });
     }, 1500);
+  }
+
+  confirmDelete() {
+    Alert.alert(
+      'DELETE ROOM',
+      'Are you sure to remove?',
+      [
+        { text: 'NO', onPress: () => console.warn('cancel') },
+        { text: 'YES', onPress: () => this.DeleteRoom() },
+      ]
+    )
   }
 
   async DeleteRoom() {
@@ -184,7 +192,7 @@ class Room extends Component {
             <View style={styles.modalBg}>
               <View style={styles.subViewTitle}>
                 <Text style={styles.titleView}> Edit Room </Text>
-                <Icon name='trash-o' style={styles.iconDelete} onPress={() => this.DeleteRoom()} />
+                <Icon name='trash-o' style={styles.iconDelete} onPress={() => this.confirmDelete()} />
               </View>
               <View style={styles.subViewInput}>
                 <Text style={styles.modalItem}> Room Name : *</Text>

@@ -10,6 +10,7 @@ import {
   AsyncStorage,
   FlatList,
   KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import {
   Header,
@@ -222,6 +223,17 @@ export class Customer extends Component {
     }, 1500);
   }
 
+  confirmDelete() {
+    Alert.alert(
+      'DELETE CUSTOMER',
+      'Are you sure to remove?',
+      [
+        { text: 'NO', onPress: () => console.warn('cancel') },
+        { text: 'YES', onPress: () => this.deleteCustomer() },
+      ]
+    )
+  }
+
   deleteCustomer = async () => {
     const tok = await AsyncStorage.getItem('token');
     const customer = this.state.id;
@@ -251,6 +263,8 @@ export class Customer extends Component {
     const tok = await AsyncStorage.getItem('token');
     await this.props.handleGetCustomer(tok);
   };
+
+
 
   handleSearch(item) {
     this.setState({ search: item.toLowerCase() });
@@ -399,7 +413,7 @@ export class Customer extends Component {
             <View style={styles.modalBg}>
               <View style={styles.subViewTitle}>
                 <Text style={styles.titleView}> Update Customer </Text>
-                <Icon name='trash-o' style={styles.iconDelete} onPress={() => this.deleteCustomer()} />
+                <Icon name='trash-o' style={styles.iconDelete} onPress={() => this.confirmDelete()} />
               </View>
               <View style={styles.subViewInput}>
                 <Text style={styles.modalItem}> Name : *</Text>
